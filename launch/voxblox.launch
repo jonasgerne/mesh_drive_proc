@@ -1,0 +1,7 @@
+<launch>
+ <node name="ovpc_mesh_analysis" pkg="mesh_drive_proc" type="mesh_drive_proc_node" output="screen">
+    <remap from="/input" to="/rrt_planner/pcl_mesh" />
+    <param name="path_ply" value="$(find mesh_drive_proc)/output/$(anon voxblox_half_edge_).ply"/>
+  </node>
+
+</launch>
