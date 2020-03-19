@@ -2,5 +2,6 @@
  <node name="ovpc_mesh_analysis" pkg="mesh_drive_proc" type="mesh_drive_proc_node" output="screen">
     <remap from="/input" to="/surfelmeshing/mesh_pcl"/>
     <param name="path_ply" value="$(find mesh_drive_proc)/output/$(anon surfelmeshing_half_edge).ply"/>
+    <param name="max_surface_angle_degree" value="30.0" />
   </node>
 </launch>

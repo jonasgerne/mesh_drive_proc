@@ -75,5 +75,4 @@ inline void calcNormalAndFaceAngle(Mesh& half_edge_mesh, unsigned int idx){
     faces[FaceIndex(idx).get()].surface_angle = normal.dot(Eigen::Vector3f::UnitZ());
 }
 
-
 #endif //MESH_DRIVE_PROC_NORMALS_H
