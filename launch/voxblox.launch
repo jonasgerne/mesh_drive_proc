@@ -4,6 +4,7 @@
     <remap from="/input" to="/rrt_planner/pcl_mesh" />
     <param name="path_ply" value="$(find mesh_drive_proc)/output/$(anon voxblox_half_edge_).ply"/>
     <param name="max_surface_angle_degree" value="30.0" />
+    <param name="local_neighborhood" value="false" />
   </node>
 
 </launch>
