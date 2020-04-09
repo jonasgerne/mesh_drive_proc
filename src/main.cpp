@@ -123,57 +123,6 @@ void MeshAnalyzer::mesh_cb(const pcl_msgs::PolygonMeshPtr &input_mesh){
     last_pcl_traversable_->header.frame_id = "world";
     pcl_pub_.publish(last_pcl_traversable_);
     ROS_INFO("Finished processing pointcloud.");
-
-    /*
-    int not_added = pcl::geometry::toHalfEdgeMesh(*meshPtr, half_edge_mesh_);
-    ROS_INFO("%d faces could not be added.", not_added);
-    ROS_INFO("Size Edges: %ld, size faces: %ld", half_edge_mesh_.sizeEdges(), half_edge_mesh_.sizeFaces());
-
-    half_edge_mesh_.cleanUp();
-
-    last_pcl_traversable_.reset(new pcl::PointCloud<pcl::PointXYZRGBNormal>);
-
-    const auto& faces = half_edge_mesh_.getFaceDataCloud();
-    const auto& vertices = half_edge_mesh_.getVertexDataCloud();
-
-    for (unsigned int i = 0; i < half_edge_mesh_.sizeFaces(); ++i) {
-        VAFC circ_vaf = half_edge_mesh_.getVertexAroundFaceCirculator(FaceIndex(i));
-
-        Eigen::Matrix3f mat;
-        int j = 0;
-        const VAFC circ_vaf_end = circ_vaf;
-        do {
-            mat.col(j) = vertices[circ_vaf.getTargetIndex().get()].getVector3fMap();
-            ++j;
-        } while (++circ_vaf != circ_vaf_end);
-
-        Eigen::Vector3f normal = (mat.col(0) - mat.col(1)).cross(mat.col(0) - mat.col(2));
-        normal.normalize();
-
-        Eigen::Vector3f center = mat.rowwise().sum() / 3.0;
-
-        pcl::PointXYZRGBNormal p_temp;
-        p_temp.x = center.x();
-        p_temp.y = center.y();
-        p_temp.z = center.z();
-        p_temp.normal_x = normal.x();
-        p_temp.normal_y = normal.y();
-        p_temp.normal_z = normal.z();
-
-        float surface_angle = normal.dot(Eigen::Vector3f::UnitZ());
-
-        if (surface_angle < cos_max_surface_angle_)
-            p_temp.r = 255;
-        else
-            p_temp.g = 255;
-
-        last_pcl_traversable_->push_back(p_temp);
-    }
-
-    last_pcl_traversable_->header.frame_id = "world";
-    pcl_pub_.publish(last_pcl_traversable_);
-    ROS_INFO("Finished processing pointcloud.");
-    */
 }
 
 void MeshAnalyzer::mesh_cb_neighborhood(const pcl_msgs::PolygonMeshPtr &input_mesh){

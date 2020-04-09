@@ -3,3 +3,5 @@
 /cmake-build-debug
 /cmake-build-debug-remote-host
 /cmake-build-release-remote-host
+.clion.source.upload.marker
+
